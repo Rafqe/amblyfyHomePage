@@ -1,0 +1,158 @@
+.modal-content {
+  border-radius: 20px;
+  border: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  background: #ffffff;
+  max-width: 450px;
+  max-height: 350px;
+  margin: 0 auto;
+}
+
+.modal-header {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 1rem 1.5rem;
+  background: #f8f9fa;
+  border-radius: 20px 20px 0 0;
+}
+
+.modal-title {
+  font-weight: 700;
+  color: #333;
+  font-size: 1.25rem;
+  margin: 0;
+  font-family: "Inter Tight", sans-serif;
+}
+
+.modal-body {
+  padding: 1rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.modal-body p {
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.modal-footer {
+  border-top: 1px solid #f0f0f0;
+  padding: 1rem 1.5rem;
+  background: #f8f9fa;
+  border-radius: 0 0 20px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.form-control {
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e9ecef;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  font-family: "Inter Tight", sans-serif;
+  margin-bottom: 0;
+  height: auto;
+}
+
+.form-control:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.15);
+  outline: none;
+}
+
+.form-control::placeholder {
+  color: #adb5bd;
+  font-weight: 400;
+}
+
+.btn-subscribe {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  font-family: "Inter Tight", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 130px;
+}
+
+.btn-subscribe:hover {
+  background-color: #0056b3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  font-family: "Inter Tight", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  min-width: 90px;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(108, 117, 125, 0.2);
+}
+
+.alert-success {
+  background-color: #d4edda;
+  border: none;
+  color: #155724;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 0;
+  font-family: "Inter Tight", sans-serif;
+  font-weight: 500;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(40, 167, 69, 0.1);
+  font-size: 0.95rem;
+}
+
+.modal-backdrop.show {
+  opacity: 0.7;
+}
+
+/* Animation for modal */
+.modal.fade .modal-dialog {
+  transform: scale(0.95);
+  transition: transform 0.3s ease-out;
+}
+
+.modal.show .modal-dialog {
+  transform: scale(1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    padding: 0.875rem;
+  }
+
+  .modal-title {
+    font-size: 1.1rem;
+  }
+
+  .btn-subscribe,
+  .btn-secondary {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    min-width: auto;
+  }
+}

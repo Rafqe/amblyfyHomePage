@@ -1,0 +1,182 @@
+/* Eye Test Styles */
+.eye-test-section {
+  padding: 4rem 0;
+  background-color: #f8f9fa;
+}
+
+.test-progress {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.test-steps {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.test-step {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  background-color: #e9ecef;
+  color: #6c757d;
+  font-weight: 500;
+}
+
+.test-step.active {
+  background-color: #0d6efd;
+  color: white;
+}
+
+.screen {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.screen.hidden {
+  display: none;
+}
+
+.instruction-box {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.instruction-text {
+  font-size: 1.1rem;
+  color: #495057;
+  margin-bottom: 1.5rem;
+}
+
+.instruction-list {
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.instruction-list li {
+  margin-bottom: 0.5rem;
+}
+
+.start-button {
+  background-color: #0d6efd;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.start-button:hover {
+  background-color: #0b5ed7;
+}
+
+.calibration-container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.reference-container {
+  margin-bottom: 1.5rem;
+}
+
+.card-reference {
+  width: 85.6mm;
+  height: 53.98mm;
+  background-color: #e9ecef;
+  border-radius: 0.5rem;
+  margin: 0 auto 1rem;
+}
+
+.size-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.size-value {
+  min-width: 4rem;
+  text-align: center;
+}
+
+.test-area {
+  text-align: center;
+}
+
+.letter-container {
+  margin-bottom: 2rem;
+}
+
+.letter-container img {
+  max-width: 100%;
+  height: auto;
+}
+
+.controls {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.question {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.direction-btn,
+.answer-btn {
+  background-color: #e9ecef;
+  border: none;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.direction-btn:hover,
+.answer-btn:hover {
+  background-color: #dee2e6;
+}
+
+.results-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.test-results {
+  margin-bottom: 2rem;
+}
+
+.test-results h2 {
+  color: #0d6efd;
+  margin-bottom: 1rem;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.recommendation {
+  background-color: #e9ecef;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.recommendation h2 {
+  color: #0d6efd;
+  margin-bottom: 1rem;
+}
