@@ -658,7 +658,7 @@ function startLeftEyeAstigmatismTest() {
 // Show random astigmatism test image
 function showAstigmatismImage() {
   currentAstigmatismImage = Math.floor(Math.random() * 3) + 1; // Random number 1-3
-  astigmatismImage.src = `assets/astigmatism${currentAstigmatismImage}.png`;
+  astigmatismImage.src = `eyeTest/assets/astigmatism${currentAstigmatismImage}.png`;
   console.log("Showing astigmatism image:", currentAstigmatismImage);
 }
 
@@ -941,7 +941,7 @@ function startContrastTest() {
     .getElementById("rightEyeContrastInstructions")
     .classList.add("hidden");
   document.getElementById("contrastTest").classList.remove("hidden");
-  document.getElementById("contrastImage").src = "assets/C.png";
+  document.getElementById("contrastImage").src = "eyeTest/assets/C.png";
   rotateContrastC();
   updateContrastImage();
 }
@@ -955,7 +955,7 @@ function startLeftEyeContrastTest() {
     .getElementById("leftEyeContrastInstructions")
     .classList.add("hidden");
   document.getElementById("contrastTest").classList.remove("hidden");
-  document.getElementById("contrastImage").src = "assets/C.png";
+  document.getElementById("contrastImage").src = "eyeTest/assets/C.png";
   rotateContrastC();
   updateContrastImage();
 }
@@ -1025,6 +1025,7 @@ function updateContrastImage() {
   const contrastImage = document.getElementById("contrastImage");
   contrastImage.style.width = `${currentContrastSize}px`;
   contrastImage.style.height = `${currentContrastSize}px`;
+  contrastImage.src = "eyeTest/assets/C.png";
 }
 
 function finishContrastTest() {
@@ -1044,7 +1045,7 @@ document.getElementById("contrastTest").innerHTML = `
   <h1>Contrast Sensitivity Test 👁️</h1>
   <div class="test-area">
     <div class="contrast-container">
-      <img src="assets/C.png" alt="Contrast Test" id="contrastImage" />
+      <img src="eyeTest/assets/C.png" alt="Contrast Test" id="contrastImage" />
     </div>
     <div class="controls">
       <p class="question">Which way is the C pointing? 🤔</p>
