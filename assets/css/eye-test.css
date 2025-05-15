@@ -1,6 +1,6 @@
 /* Eye Test Styles */
 .eye-test-section {
-  padding: 4rem 0;
+  padding: 2rem 0;
   background-color: #f8f9fa;
 }
 
@@ -19,30 +19,124 @@
   padding: 0;
 }
 
-.test-box {
-  background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
-  padding: 20px;
-  width: 700px;
-  height: 400px;
-  margin: 0 auto;
+.test-area {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  min-height: 500px;
+}
+
+.letter-container {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 2px solid #dee2e6;
+  border-radius: 0;
   position: relative;
-  overflow: auto;
+  flex-shrink: 0;
 }
 
-.test-box img {
-  max-width: 100%;
-  height: auto;
+.letter-container img {
+  width: 240px;
+  height: 240px;
+  object-fit: contain;
   display: block;
-  margin: 0 auto;
+  margin: auto;
 }
 
-.test-box .btn {
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+.controls {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin-top: -20px;
+}
+
+.buttons {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  width: 100%;
+}
+
+.direction-btn,
+.answer-btn {
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #4a90e2;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  min-width: 80px;
+}
+
+/* Calibration specific styles */
+.calibration-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.reference-container {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background-color: transparent;
+}
+
+.card-reference {
+  width: 85.6mm;
+  height: 53.98mm;
+  background-color: transparent;
+  border: 2px dashed #4a90e2;
+  border-radius: 4px;
+}
+
+/* Astigmatism and Contrast specific styles */
+#astigmatismImage,
+#contrastImage {
+  width: 240px;
+  height: 240px;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+}
+
+.contrast-container {
+  width: 300px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 2px solid #dee2e6;
+  border-radius: 0;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.contrast-container img {
+  width: 240px;
+  height: 240px;
+  object-fit: contain;
+  display: block;
+  margin: auto;
+  filter: contrast(var(--contrast, 100%));
 }
 
 .test-progress {
@@ -70,11 +164,12 @@
 }
 
 .screen {
-  background-color: white;
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
-  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  width: 100%;
 }
 
 .screen.hidden {
@@ -115,110 +210,6 @@
 
 .start-button:hover {
   background-color: #0b5ed7;
-}
-
-.calibration-container {
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.reference-container {
-  margin-bottom: 1.5rem;
-}
-
-.card-reference {
-  width: 85.6mm;
-  height: 53.98mm;
-  background-color: #e9ecef;
-  border-radius: 0.5rem;
-  margin: 0 auto 1rem;
-}
-
-.size-controls {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.size-value {
-  min-width: 4rem;
-  text-align: center;
-}
-
-.test-area {
-  text-align: center;
-}
-
-.letter-container {
-  margin-bottom: 2rem;
-  width: 300px;
-  height: 300px;
-  margin: 0 auto 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: white;
-  border: 2px solid #dee2e6;
-  border-radius: 0;
-  overflow: hidden;
-}
-
-.letter-container img {
-  width: 80%;
-  height: 80%;
-  object-fit: contain;
-  display: block;
-  margin: auto;
-}
-
-/* Specific styles for the E test */
-#letterE {
-  width: 80%;
-  height: 80%;
-  object-fit: contain;
-  display: block;
-  margin: auto;
-}
-
-/* Styles for astigmatism and contrast tests */
-#astigmatismImage,
-#contrastImage {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  display: block;
-  margin: auto;
-}
-
-.controls {
-  max-width: 400px;
-  margin: 0 auto;
-}
-
-.question {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.direction-btn,
-.answer-btn {
-  background-color: #e9ecef;
-  border: none;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.direction-btn:hover,
-.answer-btn:hover {
-  background-color: #dee2e6;
 }
 
 .results-container {

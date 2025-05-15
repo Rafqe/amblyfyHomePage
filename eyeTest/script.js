@@ -42,8 +42,8 @@ let landoltAttempts = 0;
 // Contrast Test Variables
 let currentContrast = 100;
 let contrastTestResults = {
-  rightEye: { correct: 0, incorrect: 0, lowestVisible: 100, attempts: 0 },
-  leftEye: { correct: 0, incorrect: 0, lowestVisible: 100, attempts: 0 },
+  rightEye: { correct: 0, incorrect: 0, lowestVisible: 0.1, attempts: 0 },
+  leftEye: { correct: 0, incorrect: 0, lowestVisible: 0.1, attempts: 0 },
 };
 let isRightEyeContrast = true;
 let currentContrastRotation = 0;
@@ -210,7 +210,7 @@ function checkAnswer(direction) {
   console.log(`Setting new letter size: ${letterSize}`);
   letterE.style.width = `${letterSize}px`;
   letterE.style.height = `${letterSize}px`;
-  letterE.style.fontSize = `${letterSize}px`;
+  letterE.style.transform = `rotate(${currentRotation}deg)`;
 
   rotateLetter();
   updateProgress();
@@ -218,50 +218,19 @@ function checkAnswer(direction) {
 
 // Function to show results
 function showResults() {
-  // Update basic results first
-  document.getElementById("rightEyeCorrect").textContent =
-    rightEyeResults.correct;
-  document.getElementById("rightEyeIncorrect").textContent =
-    rightEyeResults.incorrect;
-  document.getElementById("leftEyeCorrect").textContent =
-    leftEyeResults.correct;
-  document.getElementById("leftEyeIncorrect").textContent =
-    leftEyeResults.incorrect;
-
-  // Update with Snellen fractions
+  // Calculate final scores
   const rightEyeAcuity = calculateSnellenFraction(rightEyeResults.correct);
   const leftEyeAcuity = calculateSnellenFraction(leftEyeResults.correct);
 
-  document.getElementById("rightEyeAcuity").textContent = rightEyeAcuity;
-  document.getElementById("leftEyeAcuity").textContent = leftEyeAcuity;
-
-  document.getElementById("rightEyeAstigmatism").textContent =
-    astigmatismResults.right.correct >= 1 ? "Normal" : "Possible Astigmatism";
-  document.getElementById("leftEyeAstigmatism").textContent =
-    astigmatismResults.left.correct >= 1 ? "Normal" : "Possible Astigmatism";
-
-  // Update contrast results
-  const rightEyeContrastScore = contrastTestResults.rightEye.correct;
-  const leftEyeContrastScore = contrastTestResults.leftEye.correct;
-
-  const rightEyeContrast = Math.min(100, rightEyeContrastScore * 10);
-  const leftEyeContrast = Math.min(100, leftEyeContrastScore * 10);
-
-  document.getElementById("rightEyeContrastCorrect").textContent =
-    contrastTestResults.rightEye.correct;
-  document.getElementById("rightEyeContrastIncorrect").textContent =
-    contrastTestResults.rightEye.incorrect;
-  document.getElementById(
-    "rightEyeContrast"
-  ).textContent = `${rightEyeContrast}%`;
-
-  document.getElementById("leftEyeContrastCorrect").textContent =
-    contrastTestResults.leftEye.correct;
-  document.getElementById("leftEyeContrastIncorrect").textContent =
-    contrastTestResults.leftEye.incorrect;
-  document.getElementById(
-    "leftEyeContrast"
-  ).textContent = `${leftEyeContrast}%`;
+  // Calculate contrast scores based on lowest visible contrast
+  const rightEyeContrast = Math.max(
+    0.1,
+    100 - contrastTestResults.rightEye.correct * 19
+  );
+  const leftEyeContrast = Math.max(
+    0.1,
+    100 - contrastTestResults.leftEye.correct * 19
+  );
 
   // Create and show summary view
   const resultsContainer = document.querySelector(".results-container");
@@ -289,8 +258,8 @@ function showResults() {
         </div>
         <div class="summary-section">
           <h3>Contrast Sensitivity</h3>
-          <p>Right Eye: ${rightEyeContrast}%</p>
-          <p>Left Eye: ${leftEyeContrast}%</p>
+          <p>Right Eye: ${rightEyeContrast.toFixed(1)}%</p>
+          <p>Left Eye: ${leftEyeContrast.toFixed(1)}%</p>
         </div>
         <button onclick="showDetailedResults()" class="more-info-btn">More Information</button>
       </div>
@@ -302,6 +271,17 @@ function showResults() {
 }
 
 function showDetailedResults() {
+  const rightEyeAcuity = calculateSnellenFraction(rightEyeResults.correct);
+  const leftEyeAcuity = calculateSnellenFraction(leftEyeResults.correct);
+  const rightEyeContrast = Math.max(
+    0.1,
+    100 - contrastTestResults.rightEye.correct * 19
+  );
+  const leftEyeContrast = Math.max(
+    0.1,
+    100 - contrastTestResults.leftEye.correct * 19
+  );
+
   const detailedResultsPage = document.createElement("div");
   detailedResultsPage.className = "detailed-results-page";
   detailedResultsPage.innerHTML = `
@@ -314,12 +294,8 @@ function showDetailedResults() {
           <div class="result-card">
             <h3>Visual Acuity</h3>
             <div class="result-details">
-              <p><strong>Right Eye:</strong> ${calculateSnellenFraction(
-                rightEyeResults.correct
-              )}</p>
-              <p><strong>Left Eye:</strong> ${calculateSnellenFraction(
-                leftEyeResults.correct
-              )}</p>
+              <p><strong>Right Eye:</strong> ${rightEyeAcuity}</p>
+              <p><strong>Left Eye:</strong> ${leftEyeAcuity}</p>
             </div>
           </div>
           
@@ -342,14 +318,8 @@ function showDetailedResults() {
           <div class="result-card">
             <h3>Contrast Sensitivity</h3>
             <div class="result-details">
-              <p><strong>Right Eye:</strong> ${Math.min(
-                100,
-                contrastTestResults.rightEye.correct * 10
-              )}%</p>
-              <p><strong>Left Eye:</strong> ${Math.min(
-                100,
-                contrastTestResults.leftEye.correct * 10
-              )}%</p>
+              <p><strong>Right Eye:</strong> ${rightEyeContrast.toFixed(1)}%</p>
+              <p><strong>Left Eye:</strong> ${leftEyeContrast.toFixed(1)}%</p>
             </div>
           </div>
         </div>
@@ -428,14 +398,8 @@ function showDetailedResults() {
             <div class="result-interpretation">
               <h4>Your Results:</h4>
               <ul>
-                ${getContrastHealthInfo(
-                  contrastTestResults.rightEye.correct * 10,
-                  "Right"
-                )}
-                ${getContrastHealthInfo(
-                  contrastTestResults.leftEye.correct * 10,
-                  "Left"
-                )}
+                ${getContrastHealthInfo(rightEyeContrast, "Right")}
+                ${getContrastHealthInfo(leftEyeContrast, "Left")}
               </ul>
             </div>
             
@@ -452,7 +416,7 @@ function showDetailedResults() {
             <div class="warning-signs">
               <h4>When to See a Doctor:</h4>
               <ul>
-                <li>Contrast sensitivity below 60%</li>
+                <li>Contrast sensitivity below 20%</li>
                 <li>Difficulty seeing in low light</li>
                 <li>Problems with night driving</li>
               </ul>
@@ -506,14 +470,22 @@ function getAstigmatismHealthInfo(correctAnswers, eye) {
 
 function getContrastHealthInfo(score, eye) {
   let healthStatus = "";
-  if (score >= 90) {
-    healthStatus = `<li><strong>${eye} Eye:</strong> Excellent contrast sensitivity (${score}%). Your ability to distinguish objects from their background is very good.</li>`;
-  } else if (score >= 70) {
-    healthStatus = `<li><strong>${eye} Eye:</strong> Good contrast sensitivity (${score}%). Your vision in low-contrast situations is above average.</li>`;
-  } else if (score >= 50) {
-    healthStatus = `<li><strong>${eye} Eye:</strong> Moderate contrast sensitivity (${score}%). You may experience some difficulty in low-light conditions.</li>`;
+  if (score >= 80) {
+    healthStatus = `<li><strong>${eye} Eye:</strong> Excellent contrast sensitivity (${score.toFixed(
+      1
+    )}%). Your ability to distinguish objects from their background is very good.</li>`;
+  } else if (score >= 60) {
+    healthStatus = `<li><strong>${eye} Eye:</strong> Good contrast sensitivity (${score.toFixed(
+      1
+    )}%). Your vision in low-contrast situations is above average.</li>`;
+  } else if (score >= 40) {
+    healthStatus = `<li><strong>${eye} Eye:</strong> Moderate contrast sensitivity (${score.toFixed(
+      1
+    )}%). You may experience some difficulty in low-light conditions.</li>`;
   } else {
-    healthStatus = `<li><strong>${eye} Eye:</strong> Reduced contrast sensitivity (${score}%). Consider consulting an eye care professional for a comprehensive evaluation.</li>`;
+    healthStatus = `<li><strong>${eye} Eye:</strong> Reduced contrast sensitivity (${score.toFixed(
+      1
+    )}%). Consider consulting an eye care professional for a comprehensive evaluation.</li>`;
   }
   return healthStatus;
 }
@@ -557,8 +529,8 @@ function restartTest() {
   currentContrast = 100;
   currentContrastSize = 200;
   contrastTestResults = {
-    rightEye: { correct: 0, incorrect: 0, lowestVisible: 100, attempts: 0 },
-    leftEye: { correct: 0, incorrect: 0, lowestVisible: 100, attempts: 0 },
+    rightEye: { correct: 0, incorrect: 0, lowestVisible: 0.1, attempts: 0 },
+    leftEye: { correct: 0, incorrect: 0, lowestVisible: 0.1, attempts: 0 },
   };
   isRightEyeContrast = true;
 
@@ -704,6 +676,19 @@ function handleAstigmatismAnswer(isCorrect) {
 
 // Initialize the app
 document.addEventListener("DOMContentLoaded", function () {
+  // Preload images
+  const images = [
+    "eyeTest/assets/C.png",
+    "eyeTest/assets/astigmatism1.png",
+    "eyeTest/assets/astigmatism2.png",
+    "eyeTest/assets/astigmatism3.png",
+  ];
+
+  images.forEach((src) => {
+    const img = new Image();
+    img.src = src;
+  });
+
   // Hide all screens except welcome
   document.querySelectorAll(".screen").forEach((screen) => {
     screen.classList.add("hidden");
@@ -713,47 +698,29 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initialize size slider with adjusted scale
   const sizeSlider = document.getElementById("sizeSlider");
   const cardReference = document.getElementById("cardReference");
-  const baseScale = 1.014; // The current 1.014 becomes our new 100%
+  const baseScale = 1.014;
 
   function updateScale(value) {
-    // Convert percentage to scale (70% = 0.7, 100% = 1.0, 130% = 1.3)
     const scale = value / 100;
     currentSize = baseScale * scale;
-
-    // Update the display
     document.getElementById("sizeValue").textContent = `${value}%`;
-
-    // Apply the transform
-    const transform = `scale(${currentSize})`;
-    cardReference.style.transform = transform;
-
-    // Debug output
-    console.log("Updating scale:", {
-      value,
-      scale,
-      currentSize,
-      transform,
-    });
+    cardReference.style.transform = `scale(${currentSize})`;
   }
 
-  // Add input event listener
-  sizeSlider.addEventListener("input", function () {
-    const value = parseInt(this.value);
-    updateScale(value);
-  });
-
-  // Add change event listener for when slider is released
-  sizeSlider.addEventListener("change", function () {
-    const value = parseInt(this.value);
-    updateScale(value);
-  });
-
-  // Set initial values
+  // Set initial values immediately
   sizeSlider.value = 100;
   currentSize = baseScale;
   updateScale(100);
 
-  // Add keyboard controls for fine-tuning
+  // Add event listeners
+  sizeSlider.addEventListener("input", () =>
+    updateScale(parseInt(sizeSlider.value))
+  );
+  sizeSlider.addEventListener("change", () =>
+    updateScale(parseInt(sizeSlider.value))
+  );
+
+  // Add keyboard controls
   document.addEventListener("keydown", function (e) {
     if (e.key === "ArrowLeft") {
       adjustSize("smaller");
@@ -761,6 +728,9 @@ document.addEventListener("DOMContentLoaded", function () {
       adjustSize("larger");
     }
   });
+
+  // Initialize progress
+  updateProgress();
 });
 
 function adjustSize(direction) {
@@ -975,6 +945,16 @@ function rotateContrastC() {
   ).style.transform = `rotate(${currentContrastRotation}deg)`;
 }
 
+function updateContrastImage() {
+  const contrastImage = document.getElementById("contrastImage");
+  // Apply both opacity and contrast for better effect
+  contrastImage.style.filter = `contrast(${currentContrast}%) opacity(${
+    currentContrast / 100
+  })`;
+  contrastImage.style.width = `${currentContrastSize}px`;
+  contrastImage.style.height = `${currentContrastSize}px`;
+}
+
 function handleContrastAnswer(direction) {
   const eye = isRightEyeContrast ? "rightEye" : "leftEye";
   let correctDirection;
@@ -999,13 +979,16 @@ function handleContrastAnswer(direction) {
 
   if (isCorrect) {
     contrastTestResults[eye].correct++;
-    // Calculate contrast based on number of correct answers (100% is best)
-    const newContrast = Math.min(100, contrastTestResults[eye].correct * 10);
-    contrastTestResults[eye].lowestVisible = newContrast;
-    currentContrast = 100 - newContrast; // Invert for display
-    currentContrastSize = Math.max(20, currentContrastSize - 18); // Reduce size by 18px each time
+    // Reduce contrast by 19% each time
+    currentContrast = Math.max(3, currentContrast - 19);
+    // Reduce size by 30px each time
+    currentContrastSize = Math.max(40, currentContrastSize - 30);
   } else {
     contrastTestResults[eye].incorrect++;
+    // Increase contrast by 10% if wrong
+    currentContrast = Math.min(100, currentContrast + 10);
+    // Increase size by 15px if wrong
+    currentContrastSize = Math.min(240, currentContrastSize + 15);
   }
 
   if (contrastTestResults[eye].attempts >= CONTRAST_ATTEMPTS_PER_EYE) {
@@ -1015,17 +998,6 @@ function handleContrastAnswer(direction) {
 
   updateContrastImage();
   rotateContrastC();
-}
-
-function updateContrastImage() {
-  document.documentElement.style.setProperty(
-    "--contrast",
-    `${currentContrast}%`
-  );
-  const contrastImage = document.getElementById("contrastImage");
-  contrastImage.style.width = `${currentContrastSize}px`;
-  contrastImage.style.height = `${currentContrastSize}px`;
-  contrastImage.src = "eyeTest/assets/C.png";
 }
 
 function finishContrastTest() {
@@ -1056,5 +1028,85 @@ document.getElementById("contrastTest").innerHTML = `
         <button onclick="handleContrastAnswer('left')" class="direction-btn">⬅️</button>
       </div>
     </div>
+  </div>
+`;
+
+// Update the instructions for test 2 and 3
+document.getElementById("rightEyeContrastInstructions").innerHTML = `
+  <h1>Contrast Sensitivity Test - Right Eye 👁️</h1>
+  <div class="instruction-box">
+    <p class="instruction-text">
+      This test measures your ability to distinguish objects from their background.
+      You will see a letter C that will become progressively harder to see.
+    </p>
+    <ul class="instruction-list">
+      <li>Cover your left eye completely</li>
+      <li>Keep your right eye open and focused on the screen</li>
+      <li>Tell us which way the C is pointing using the arrow buttons</li>
+      <li>The C will become harder to see as you get answers correct</li>
+      <li>If you can't see the C clearly, you can get it wrong to make it more visible</li>
+      <li>Take your time and be as accurate as possible</li>
+    </ul>
+    <button onclick="startContrastTest()" class="start-button">Start Test</button>
+  </div>
+`;
+
+document.getElementById("leftEyeContrastInstructions").innerHTML = `
+  <h1>Contrast Sensitivity Test - Left Eye 👁️</h1>
+  <div class="instruction-box">
+    <p class="instruction-text">
+      Now we'll test your left eye's contrast sensitivity.
+      The test will be the same as before, but with your left eye.
+    </p>
+    <ul class="instruction-list">
+      <li>Cover your right eye completely</li>
+      <li>Keep your left eye open and focused on the screen</li>
+      <li>Tell us which way the C is pointing using the arrow buttons</li>
+      <li>The C will become harder to see as you get answers correct</li>
+      <li>If you can't see the C clearly, you can get it wrong to make it more visible</li>
+      <li>Take your time and be as accurate as possible</li>
+    </ul>
+    <button onclick="startLeftEyeContrastTest()" class="start-button">Start Test</button>
+  </div>
+`;
+
+// Update the instructions for astigmatism test
+document.getElementById("astigmatismInstructions").innerHTML = `
+  <h1>Astigmatism Test - Right Eye 👁️</h1>
+  <div class="instruction-box">
+    <p class="instruction-text">
+      This test helps detect astigmatism by checking if you see lines equally clearly in all directions.
+      You will see a series of lines that may appear different in clarity.
+    </p>
+    <ul class="instruction-list">
+      <li>Cover your left eye completely</li>
+      <li>Keep your right eye open and focused on the screen</li>
+      <li>Look at the center of the image</li>
+      <li>Tell us if all the lines appear equally clear and sharp</li>
+      <li>If some lines appear blurrier or less distinct than others, select "No"</li>
+      <li>If all lines appear equally clear and sharp, select "Yes"</li>
+      <li>Take your time to make a careful observation</li>
+    </ul>
+    <button onclick="startAstigmatismTest()" class="start-button">Start Test</button>
+  </div>
+`;
+
+document.getElementById("leftEyeAstigmatismInstructions").innerHTML = `
+  <h1>Astigmatism Test - Left Eye 👁️</h1>
+  <div class="instruction-box">
+    <p class="instruction-text">
+      Now we'll test your left eye for astigmatism.
+      The test will be the same as before, but with your left eye.
+    </p>
+    <ul class="instruction-list">
+      <li>Cover your right eye completely</li>
+      <li>Keep your left eye open and focused on the screen</li>
+      <li>Look at the center of the image</li>
+      <li>Tell us if all the lines appear equally clear and sharp</li>
+      <li>If some lines appear blurrier or less distinct than others, select "No"</li>
+      <li>If all lines appear equally clear and sharp, select "Yes"</li>
+      <li>Take your time to make a careful observation</li>
+    </ul>
+    <button onclick="startLeftEyeAstigmatismTest()" class="start-button">Start Test</button>
   </div>
 `;
