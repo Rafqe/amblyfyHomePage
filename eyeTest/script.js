@@ -261,233 +261,13 @@ function showResults() {
           <p>Right Eye: ${rightEyeContrast.toFixed(1)}%</p>
           <p>Left Eye: ${leftEyeContrast.toFixed(1)}%</p>
         </div>
-        <button onclick="showDetailedResults()" class="more-info-btn">More Information</button>
+        <button onclick="restartTest()" class="start-button">Take Test Again</button>
       </div>
     </div>
   `;
 
   showScreen("resultsScreen");
   updateProgress();
-}
-
-function showDetailedResults() {
-  const rightEyeAcuity = calculateSnellenFraction(rightEyeResults.correct);
-  const leftEyeAcuity = calculateSnellenFraction(leftEyeResults.correct);
-  const rightEyeContrast = Math.max(
-    0.1,
-    100 - contrastTestResults.rightEye.correct * 19
-  );
-  const leftEyeContrast = Math.max(
-    0.1,
-    100 - contrastTestResults.leftEye.correct * 19
-  );
-
-  const detailedResultsPage = document.createElement("div");
-  detailedResultsPage.className = "detailed-results-page";
-  detailedResultsPage.innerHTML = `
-    <div class="detailed-results-container">
-      <h1>Test Results Analysis</h1>
-      
-      <div class="results-section">
-        <h2>Your Results</h2>
-        <div class="results-grid">
-          <div class="result-card">
-            <h3>Visual Acuity</h3>
-            <div class="result-details">
-              <p><strong>Right Eye:</strong> ${rightEyeAcuity}</p>
-              <p><strong>Left Eye:</strong> ${leftEyeAcuity}</p>
-            </div>
-          </div>
-          
-          <div class="result-card">
-            <h3>Astigmatism</h3>
-            <div class="result-details">
-              <p><strong>Right Eye:</strong> ${
-                astigmatismResults.right.correct >= 1
-                  ? "Normal"
-                  : "Possible Astigmatism"
-              }</p>
-              <p><strong>Left Eye:</strong> ${
-                astigmatismResults.left.correct >= 1
-                  ? "Normal"
-                  : "Possible Astigmatism"
-              }</p>
-            </div>
-          </div>
-          
-          <div class="result-card">
-            <h3>Contrast Sensitivity</h3>
-            <div class="result-details">
-              <p><strong>Right Eye:</strong> ${rightEyeContrast.toFixed(1)}%</p>
-              <p><strong>Left Eye:</strong> ${leftEyeContrast.toFixed(1)}%</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="health-section">
-        <h2>Understanding Your Results</h2>
-        
-        <div class="health-card">
-          <h3>Visual Acuity</h3>
-          <div class="health-content">
-            <div class="result-interpretation">
-              <h4>Your Results:</h4>
-              <ul>
-                ${getAcuityHealthInfo(rightEyeResults.correct, "Right")}
-                ${getAcuityHealthInfo(leftEyeResults.correct, "Left")}
-              </ul>
-            </div>
-            
-            <div class="health-info">
-              <h4>What This Means:</h4>
-              <ul>
-                <li>20/20: Normal vision - You can see at 20 feet what a person with normal vision sees at 20 feet</li>
-                <li>20/40: You can see at 20 feet what a person with normal vision sees at 40 feet</li>
-                <li>20/200: Legal blindness - You can see at 20 feet what a person with normal vision sees at 200 feet</li>
-              </ul>
-            </div>
-            
-            <div class="warning-signs">
-              <h4>When to See a Doctor:</h4>
-              <ul>
-                <li>Vision worse than 20/40</li>
-                <li>Significant difference between eyes</li>
-                <li>Frequent headaches or eye strain</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="health-card">
-          <h3>Astigmatism</h3>
-          <div class="health-content">
-            <div class="result-interpretation">
-              <h4>Your Results:</h4>
-              <ul>
-                ${getAstigmatismHealthInfo(
-                  astigmatismResults.right.correct,
-                  "Right"
-                )}
-                ${getAstigmatismHealthInfo(
-                  astigmatismResults.left.correct,
-                  "Left"
-                )}
-              </ul>
-            </div>
-            
-            <div class="health-info">
-              <h4>What This Means:</h4>
-              <p>Astigmatism is a common condition where the cornea or lens has an irregular shape, causing blurred vision at all distances.</p>
-            </div>
-            
-            <div class="warning-signs">
-              <h4>When to See a Doctor:</h4>
-              <ul>
-                <li>Blurred vision at any distance</li>
-                <li>Eye strain or headaches</li>
-                <li>Difficulty seeing at night</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="health-card">
-          <h3>Contrast Sensitivity</h3>
-          <div class="health-content">
-            <div class="result-interpretation">
-              <h4>Your Results:</h4>
-              <ul>
-                ${getContrastHealthInfo(rightEyeContrast, "Right")}
-                ${getContrastHealthInfo(leftEyeContrast, "Left")}
-              </ul>
-            </div>
-            
-            <div class="health-info">
-              <h4>What This Means:</h4>
-              <p>Contrast sensitivity measures your ability to distinguish objects from their background. It's crucial for:</p>
-              <ul>
-                <li>Night driving</li>
-                <li>Reading in low light</li>
-                <li>Recognizing faces</li>
-              </ul>
-            </div>
-            
-            <div class="warning-signs">
-              <h4>When to See a Doctor:</h4>
-              <ul>
-                <li>Contrast sensitivity below 20%</li>
-                <li>Difficulty seeing in low light</li>
-                <li>Problems with night driving</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="disclaimer">
-        <p><strong>Note:</strong> This test is not a substitute for a professional eye examination. Regular eye exams are essential for maintaining eye health.</p>
-      </div>
-
-      <button onclick="returnToSummary()" class="back-btn">Back to Summary</button>
-    </div>
-  `;
-
-  const resultsContainer = document.querySelector(".results-container");
-  resultsContainer.innerHTML = "";
-  resultsContainer.appendChild(detailedResultsPage);
-}
-
-function returnToSummary() {
-  showResults();
-}
-
-function getAcuityHealthInfo(correctAnswers, eye) {
-  const snellenFraction = calculateSnellenFraction(correctAnswers);
-  let healthStatus = "";
-
-  if (correctAnswers >= 14) {
-    healthStatus = `<li><strong>${eye} Eye:</strong> Excellent vision (${snellenFraction}). Your visual acuity is very good.</li>`;
-  } else if (correctAnswers >= 10) {
-    healthStatus = `<li><strong>${eye} Eye:</strong> Good vision (${snellenFraction}). Your visual acuity is above average.</li>`;
-  } else if (correctAnswers >= 6) {
-    healthStatus = `<li><strong>${eye} Eye:</strong> Moderate vision (${snellenFraction}). You may benefit from a comprehensive eye exam.</li>`;
-  } else {
-    healthStatus = `<li><strong>${eye} Eye:</strong> Reduced vision (${snellenFraction}). Consider consulting an eye care professional.</li>`;
-  }
-  return healthStatus;
-}
-
-function getAstigmatismHealthInfo(correctAnswers, eye) {
-  let healthStatus = "";
-  if (correctAnswers >= 1) {
-    healthStatus = `<li><strong>${eye} Eye:</strong> Normal astigmatism test results. No significant astigmatism detected.</li>`;
-  } else {
-    healthStatus = `<li><strong>${eye} Eye:</strong> Possible astigmatism detected. Consider a comprehensive eye exam.</li>`;
-  }
-  return healthStatus;
-}
-
-function getContrastHealthInfo(score, eye) {
-  let healthStatus = "";
-  if (score >= 80) {
-    healthStatus = `<li><strong>${eye} Eye:</strong> Excellent contrast sensitivity (${score.toFixed(
-      1
-    )}%). Your ability to distinguish objects from their background is very good.</li>`;
-  } else if (score >= 60) {
-    healthStatus = `<li><strong>${eye} Eye:</strong> Good contrast sensitivity (${score.toFixed(
-      1
-    )}%). Your vision in low-contrast situations is above average.</li>`;
-  } else if (score >= 40) {
-    healthStatus = `<li><strong>${eye} Eye:</strong> Moderate contrast sensitivity (${score.toFixed(
-      1
-    )}%). You may experience some difficulty in low-light conditions.</li>`;
-  } else {
-    healthStatus = `<li><strong>${eye} Eye:</strong> Reduced contrast sensitivity (${score.toFixed(
-      1
-    )}%). Consider consulting an eye care professional for a comprehensive evaluation.</li>`;
-  }
-  return healthStatus;
 }
 
 // Function to restart the test
@@ -805,10 +585,9 @@ function finishCalibration() {
   // Apply settings to the test
   document.documentElement.style.setProperty("--test-size", `${currentSize}`);
 
-  // Start the test
+  // Show right eye instructions instead of starting test directly
   document.getElementById("calibrationScreen").classList.add("hidden");
   document.getElementById("rightEyeInstructions").classList.remove("hidden");
-  startTest();
 }
 
 // Initialize the test
@@ -1108,5 +887,24 @@ document.getElementById("leftEyeAstigmatismInstructions").innerHTML = `
       <li>Take your time to make a careful observation</li>
     </ul>
     <button onclick="startLeftEyeAstigmatismTest()" class="start-button">Start Test</button>
+  </div>
+`;
+
+// Update the instructions for right eye test
+document.getElementById("rightEyeInstructions").innerHTML = `
+  <h1>Eye Test Adventure! 👀</h1>
+  <div class="instruction-box">
+    <p class="instruction-text">
+      Let's test your right eye first! Here's what to do:
+    </p>
+    <ul class="instruction-list">
+      <li>Cover your left eye with your hand ✋</li>
+      <li>Stand 1 meter away from the screen</li>
+      <li>You'll see a letter E pointing in different directions</li>
+      <li>Click the arrow button that matches the direction the E is pointing</li>
+      <li>You'll have multiple attempts at each size</li>
+      <li>Try your best to identify the direction correctly!</li>
+    </ul>
+    <button onclick="startTest()" class="start-button">Start the Adventure! 🚀</button>
   </div>
 `;

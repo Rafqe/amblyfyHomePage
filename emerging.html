@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="assets/css/socicon.css" />
     <link rel="stylesheet" href="assets/css/theme.css" />
     <link rel="stylesheet" href="assets/fonts/google-fonts.css" />
+    <link rel="stylesheet" href="assets/css/treatments.css" />
 
     <style>
       .navbar-fixed-top {
@@ -47,129 +48,8 @@
     </style>
   </head>
   <body>
-    <section
-      data-bs-version="5.1"
-      class="menu menu2 cid-tJS6tZXiPa"
-      once="menu"
-      id="menu02-0"
-    >
-      <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-        <div class="container">
-          <div class="navbar-brand">
-            <span class="navbar-logo">
-              <a href="index.html"
-                ><img
-                  src="assets/images/amb-96x48.png"
-                  alt="Amblyfy Logo"
-                  style="height: 3rem"
-              /></a>
-            </span>
-            <span class="navbar-caption-wrap"
-              ><a
-                class="navbar-caption text-black text-primary display-4"
-                href="index.html#header05-1"
-                >AMBLYFY</a
-              ></span
-            >
-          </div>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-bs-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <div class="hamburger">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link link text-black text-primary dropdown-toggle display-4"
-                  href="index.html#header01-7"
-                  data-toggle="dropdown-submenu"
-                  data-bs-toggle="dropdown"
-                  data-bs-auto-close="outside"
-                  aria-expanded="false"
-                  >Treatments</a
-                >
-                <div class="dropdown-menu" aria-labelledby="dropdown-313">
-                  <a
-                    class="text-black text-primary dropdown-item show display-4"
-                    href="traditional.html"
-                    >Traditional</a
-                  ><a
-                    class="text-black text-primary dropdown-item show display-4"
-                    href="emerging.html"
-                    >Emerging</a
-                  ><a
-                    class="text-black text-primary dropdown-item show display-4"
-                    href="alternative.html"
-                    >Alternative</a
-                  >
-                </div>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link link text-black text-primary dropdown-toggle display-4"
-                  href="index.html#contacts02-9"
-                  data-toggle="dropdown-submenu"
-                  data-bs-toggle="dropdown"
-                  data-bs-auto-close="outside"
-                  aria-expanded="false"
-                  >Tools</a
-                >
-                <div class="dropdown-menu" aria-labelledby="dropdown-457">
-                  <a
-                    class="text-black text-primary dropdown-item display-4"
-                    href="self-check.html"
-                    >Ambliopia Self Check</a
-                  ><a
-                    class="text-black text-primary dropdown-item display-4"
-                    href="progress-tracker.html"
-                    >Progress Tracker</a
-                  >
-                </div>
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link link text-black text-primary show display-4"
-                  href="blog.html"
-                  >Blog</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link link text-black text-primary show display-4"
-                  href="contacts.html"
-                  >Contacts</a
-                >
-              </li>
-            </ul>
-
-            <div class="navbar-buttons mbr-section-btn">
-              <a
-                class="btn btn-primary display-4"
-                href="#"
-                data-bs-toggle="modal"
-                data-bs-target="#subscribeModal"
-                >SUBSCRIBE</a
-              >
-            </div>
-          </div>
-        </div>
-      </nav>
-    </section>
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
 
     <section
       data-bs-version="5.1"
@@ -183,18 +63,48 @@
         style="opacity: 1; background-color: rgb(255, 255, 255)"
       ></div>
       <div class="topbg"></div>
-      <div class="align-center container">
-        <div class="row justify-content-center">
-          <div class="col-md-12 col-lg-9">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <div class="treatment-image">
+              <img
+                src="assets/images/boy_with_VR.png"
+                alt="Modern vision therapy equipment"
+                class="img-fluid rounded shadow"
+              />
+            </div>
+          </div>
+          <div class="col-md-6">
             <h1 class="mbr-section-title mbr-fonts-style mb-4 display-1">
               <strong>Emerging Treatments</strong>
             </h1>
-            <div class="treatment-image text-center mb-5">
-              <img
-                src="assets/images/boy_with_VR.png"
-                alt="Child using VR for amblyopia treatment"
-                class="img-fluid rounded shadow"
-              />
+            <div class="header-text">
+              <p class="mbr-text mbr-fonts-style display-7 mb-4">
+                Modern technology and research have led to innovative approaches
+                in amblyopia treatment. These emerging methods combine
+                cutting-edge technology with traditional principles to enhance
+                treatment effectiveness.
+              </p>
+              <div class="key-points">
+                <div class="point-item mb-3 animate__animated animate__fadeIn">
+                  <i class="fas fa-check-circle text-primary me-2"></i>
+                  <span>Advanced digital therapy solutions</span>
+                </div>
+                <div
+                  class="point-item mb-3 animate__animated animate__fadeIn"
+                  style="animation-delay: 0.2s"
+                >
+                  <i class="fas fa-check-circle text-primary me-2"></i>
+                  <span>Gamified treatment approaches</span>
+                </div>
+                <div
+                  class="point-item mb-3 animate__animated animate__fadeIn"
+                  style="animation-delay: 0.4s"
+                >
+                  <i class="fas fa-check-circle text-primary me-2"></i>
+                  <span>Personalized treatment programs</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -338,59 +248,15 @@
       </div>
     </section>
 
-    <section class="footer3 cid-tJS6uM4N94" id="footer03-8">
-      <div class="container">
-        <div class="media-container-row align-center mbr-white">
-          <div class="row social-row">
-            <div class="social-list align-right pb-2">
-              <div class="soc-item">
-                <a href="https://twitter.com/mobirise" target="_blank">
-                  <span
-                    class="mbr-iconfont mbr-iconfont-social socicon-twitter socicon"
-                  ></span>
-                </a>
-              </div>
-              <div class="soc-item">
-                <a
-                  href="https://www.facebook.com/pages/Mobirise/1616226671953247"
-                  target="_blank"
-                >
-                  <span
-                    class="mbr-iconfont mbr-iconfont-social socicon-facebook socicon"
-                  ></span>
-                </a>
-              </div>
-              <div class="soc-item">
-                <a href="https://www.youtube.com/c/mobirise" target="_blank">
-                  <span
-                    class="mbr-iconfont mbr-iconfont-social socicon-youtube socicon"
-                  ></span>
-                </a>
-              </div>
-              <div class="soc-item">
-                <a href="https://instagram.com/mobirise" target="_blank">
-                  <span
-                    class="mbr-iconfont mbr-iconfont-social socicon-instagram socicon"
-                  ></span>
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="row row-copirayt">
-            <p
-              class="mbr-text mb-0 mbr-fonts-style mbr-white align-center display-7"
-            >
-              © Copyright 2024 Amblyfy. All Rights Reserved
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
 
+    <!-- Scripts -->
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/components.js"></script>
 
     <!-- Subscription Modal -->
     <div

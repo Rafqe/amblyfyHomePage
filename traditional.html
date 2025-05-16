@@ -33,6 +33,7 @@
     <link rel="stylesheet" href="assets/css/socicon.css" />
     <link rel="stylesheet" href="assets/css/theme.css" />
     <link rel="stylesheet" href="assets/fonts/google-fonts.css" />
+    <link rel="stylesheet" href="assets/css/treatments.css" />
 
     <style>
       .navbar-fixed-top {
@@ -41,132 +42,132 @@
       .navbar.opened {
         z-index: 1032;
       }
+
+      /* New enhanced styles */
+      .treatment-methods {
+        padding: 2rem 0;
+      }
+
+      .method-item {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 2rem;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+        border-left: 5px solid #007bff;
+      }
+
+      .method-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .method-item h3 {
+        color: #2c3e50;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+        padding-bottom: 0.5rem;
+      }
+
+      .method-item h3::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: #007bff;
+      }
+
+      .method-item p {
+        color: #555;
+        line-height: 1.8;
+        font-size: 1.1rem;
+      }
+
+      .treatment-image {
+        margin: 3rem 0;
+        position: relative;
+      }
+
+      .treatment-image img {
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease;
+      }
+
+      .treatment-image img:hover {
+        transform: scale(1.02);
+      }
+
+      .treatment-image::after {
+        content: "";
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        height: 20px;
+        background: rgba(0, 0, 0, 0.1);
+        filter: blur(10px);
+        z-index: -1;
+      }
+
+      .header5 {
+        padding: 4rem 0;
+      }
+
+      .mbr-section-title {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-text {
+        color: #555;
+      }
+
+      .key-points {
+        background: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 10px;
+        margin-top: 2rem;
+      }
+
+      .point-item {
+        display: flex;
+        align-items: center;
+        font-size: 1.1rem;
+      }
+
+      .point-item i {
+        font-size: 1.2rem;
+      }
+
+      @media (max-width: 768px) {
+        .method-item {
+          padding: 1.5rem;
+        }
+
+        .method-item h3 {
+          font-size: 1.5rem;
+        }
+
+        .treatment-image {
+          margin-bottom: 2rem;
+        }
+
+        .header-text {
+          text-align: center;
+        }
+
+        .key-points {
+          text-align: left;
+        }
+      }
     </style>
   </head>
   <body>
-    <section
-      data-bs-version="5.1"
-      class="menu menu2 cid-tJS6tZXiPa"
-      once="menu"
-      id="menu02-0"
-    >
-      <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-        <div class="container">
-          <div class="navbar-brand">
-            <span class="navbar-logo">
-              <a href="index.html"
-                ><img
-                  src="assets/images/amb-96x48.png"
-                  alt="Amblyfy Logo"
-                  style="height: 3rem"
-              /></a>
-            </span>
-            <span class="navbar-caption-wrap"
-              ><a
-                class="navbar-caption text-black text-primary display-4"
-                href="index.html#header05-1"
-                >AMBLYFY</a
-              ></span
-            >
-          </div>
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-bs-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarNavAltMarkup"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <div class="hamburger">
-              <span></span>
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link link text-black text-primary dropdown-toggle display-4"
-                  href="index.html#header01-7"
-                  data-toggle="dropdown-submenu"
-                  data-bs-toggle="dropdown"
-                  data-bs-auto-close="outside"
-                  aria-expanded="false"
-                  >Treatments</a
-                >
-                <div class="dropdown-menu" aria-labelledby="dropdown-313">
-                  <a
-                    class="text-black text-primary dropdown-item show display-4"
-                    href="traditional.html"
-                    >Traditional</a
-                  ><a
-                    class="text-black text-primary dropdown-item show display-4"
-                    href="emerging.html"
-                    >Emerging</a
-                  ><a
-                    class="text-black text-primary dropdown-item show display-4"
-                    href="alternative.html"
-                    >Alternative</a
-                  >
-                </div>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link link text-black text-primary dropdown-toggle display-4"
-                  href="index.html#contacts02-9"
-                  data-toggle="dropdown-submenu"
-                  data-bs-toggle="dropdown"
-                  data-bs-auto-close="outside"
-                  aria-expanded="false"
-                  >Tools</a
-                >
-                <div class="dropdown-menu" aria-labelledby="dropdown-457">
-                  <a
-                    class="text-black text-primary dropdown-item display-4"
-                    href="self-check.html"
-                    >Ambliopia Self Check</a
-                  ><a
-                    class="text-black text-primary dropdown-item display-4"
-                    href="progress-tracker.html"
-                    >Progress Tracker</a
-                  >
-                </div>
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link link text-black text-primary show display-4"
-                  href="blog.html"
-                  >Blog</a
-                >
-              </li>
-              <li class="nav-item">
-                <a
-                  class="nav-link link text-black text-primary show display-4"
-                  href="contacts.html"
-                  >Contacts</a
-                >
-              </li>
-            </ul>
-
-            <div class="navbar-buttons mbr-section-btn">
-              <a
-                class="btn btn-primary display-4"
-                href="#"
-                data-bs-toggle="modal"
-                data-bs-target="#subscribeModal"
-                >SUBSCRIBE</a
-              >
-            </div>
-          </div>
-        </div>
-      </nav>
-    </section>
+    <!-- Navbar Container -->
+    <div id="navbar-container"></div>
 
     <section
       data-bs-version="5.1"
@@ -180,13 +181,10 @@
         style="opacity: 1; background-color: rgb(255, 255, 255)"
       ></div>
       <div class="topbg"></div>
-      <div class="align-center container">
-        <div class="row justify-content-center">
-          <div class="col-md-12 col-lg-9">
-            <h1 class="mbr-section-title mbr-fonts-style mb-4 display-1">
-              <strong>Traditional Treatments</strong>
-            </h1>
-            <div class="treatment-image text-center mb-5">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <div class="treatment-image">
               <img
                 src="assets/images/boy_with_patch.jpg"
                 alt="Boy wearing an eye patch for amblyopia treatment"
@@ -194,94 +192,167 @@
               />
             </div>
           </div>
+          <div class="col-md-6">
+            <h1 class="mbr-section-title mbr-fonts-style mb-4 display-1">
+              <strong>Traditional Treatments</strong>
+            </h1>
+            <div class="header-text">
+              <p class="mbr-text mbr-fonts-style display-7 mb-4">
+                Traditional treatments for amblyopia have been the cornerstone
+                of vision therapy for decades. These proven methods focus on
+                strengthening the weaker eye and improving visual acuity through
+                various approaches.
+              </p>
+              <div class="key-points">
+                <div class="point-item mb-3 animate__animated animate__fadeIn">
+                  <i class="fas fa-check-circle text-primary me-2"></i>
+                  <span>Proven treatment methods</span>
+                </div>
+                <div
+                  class="point-item mb-3 animate__animated animate__fadeIn"
+                  style="animation-delay: 0.2s"
+                >
+                  <i class="fas fa-check-circle text-primary me-2"></i>
+                  <span>Professional medical supervision</span>
+                </div>
+                <div
+                  class="point-item mb-3 animate__animated animate__fadeIn"
+                  style="animation-delay: 0.4s"
+                >
+                  <i class="fas fa-check-circle text-primary me-2"></i>
+                  <span>Comprehensive vision care</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="content5 cid-tJS6uM4N88" id="content5-2">
+    <section class="content5 cid-tJS6uM4N88" id="content05-2">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-12 col-lg-10">
-            <div class="content-wrapper">
+            <h4
+              class="mbr-section-subtitle align-center mbr-fonts-style mb-4 display-5"
+            >
+              Traditional Approaches to Amblyopia Treatment
+            </h4>
+            <p class="mbr-text align-center mbr-fonts-style display-7">
+              Traditional treatments for amblyopia have been the cornerstone of
+              vision therapy for decades. These proven methods focus on
+              strengthening the weaker eye and improving visual acuity through
+              various approaches.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-              <div class="treatment-methods">
-                <div class="method-item mb-5">
-                  <h3 class="mbr-section-title mbr-fonts-style mb-3 display-5">
-                    <strong>1. Corrective Eyewear</strong>
-                  </h3>
-                  <p class="mbr-text mbr-fonts-style display-7">
-                    The first step in treating amblyopia often involves
-                    correcting any refractive errors such as nearsightedness,
-                    farsightedness, or astigmatism with prescription glasses or
-                    contact lenses. In some cases, clear vision can be restored
-                    solely through consistent use of proper eyewear.
-                  </p>
-                </div>
+    <section class="content5 cid-tJS6uM4N89" id="content05-3">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12 col-lg-10">
+            <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
+              Corrective Eyewear
+            </h4>
+            <p class="mbr-text mbr-fonts-style display-7">
+              The first step in treating amblyopia often involves correcting any
+              refractive errors:
+            </p>
+            <ul class="mbr-text mbr-fonts-style display-7">
+              <li>
+                Prescription glasses for nearsightedness and farsightedness
+              </li>
+              <li>Contact lenses as an alternative to glasses</li>
+              <li>Specialized lenses for astigmatism</li>
+              <li>Regular vision checks and prescription updates</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                <div class="method-item mb-5">
-                  <h3 class="mbr-section-title mbr-fonts-style mb-3 display-5">
-                    <strong>2. Patching Therapy (Occlusion Therapy)</strong>
-                  </h3>
-                  <p class="mbr-text mbr-fonts-style display-7">
-                    This is the most widely used traditional method. A patch is
-                    placed over the stronger eye, forcing the brain to rely on
-                    the weaker eye. Over time, this encourages the development
-                    of visual pathways in the brain corresponding to the
-                    amblyopic eye. Patching schedules can vary, often ranging
-                    from a few hours a day to full-time wear, depending on the
-                    severity and age of the patient.
-                  </p>
-                </div>
+    <section class="content5 cid-tJS6uM4N90" id="content05-4">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12 col-lg-10">
+            <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
+              Patching Therapy
+            </h4>
+            <p class="mbr-text mbr-fonts-style display-7">
+              Occlusion therapy is the most widely used traditional method:
+            </p>
+            <ul class="mbr-text mbr-fonts-style display-7">
+              <li>Eye patch over the stronger eye</li>
+              <li>Customized patching schedules</li>
+              <li>Regular monitoring of progress</li>
+              <li>Adjustment of treatment duration as needed</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                <div class="method-item mb-5">
-                  <h3 class="mbr-section-title mbr-fonts-style mb-3 display-5">
-                    <strong>3. Atropine Eye Drops</strong>
-                  </h3>
-                  <p class="mbr-text mbr-fonts-style display-7">
-                    An alternative to patching, atropine drops are placed in the
-                    stronger eye to temporarily blur vision, again forcing the
-                    brain to use the weaker eye. This method is particularly
-                    useful for children who may resist wearing an eye patch.
-                  </p>
-                </div>
+    <section class="content5 cid-tJS6uM4N91" id="content05-5">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12 col-lg-10">
+            <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
+              Atropine Eye Drops
+            </h4>
+            <p class="mbr-text mbr-fonts-style display-7">
+              An alternative to patching that can be more comfortable for some
+              patients:
+            </p>
+            <ul class="mbr-text mbr-fonts-style display-7">
+              <li>Temporary blurring of the stronger eye</li>
+              <li>Less visible than patching</li>
+              <li>May be preferred by older children</li>
+              <li>Regular monitoring of effectiveness</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                <div class="method-item mb-5">
-                  <h3 class="mbr-section-title mbr-fonts-style mb-3 display-5">
-                    <strong>4. Vision Therapy (Orthoptics)</strong>
-                  </h3>
-                  <p class="mbr-text mbr-fonts-style display-7">
-                    In some cases, structured eye exercises or vision therapy
-                    may be prescribed by an eye care professional. These
-                    exercises help improve coordination, focusing, and binocular
-                    vision. Traditional vision therapy may be done at home or in
-                    a clinical setting.
-                  </p>
-                </div>
+    <section class="content5 cid-tJS6uM4N92" id="content05-6">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12 col-lg-10">
+            <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
+              Vision Therapy
+            </h4>
+            <p class="mbr-text mbr-fonts-style display-7">
+              Professional vision therapy exercises to improve visual skills:
+            </p>
+            <ul class="mbr-text mbr-fonts-style display-7">
+              <li>Eye coordination exercises</li>
+              <li>Focusing and tracking activities</li>
+              <li>Binocular vision training</li>
+              <li>Visual processing exercises</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                <div class="method-item mb-5">
-                  <h3 class="mbr-section-title mbr-fonts-style mb-3 display-5">
-                    <strong>5. Surgical Options (if necessary)</strong>
-                  </h3>
-                  <p class="mbr-text mbr-fonts-style display-7">
-                    If amblyopia is caused by conditions such as strabismus (eye
-                    misalignment) or ptosis (drooping eyelid), surgery may be
-                    required to correct the anatomical issue before or during
-                    amblyopia treatment.
-                  </p>
-                </div>
-
-                <div class="note-box p-4 bg-light rounded">
-                  <p class="mbr-text mbr-fonts-style display-7 mb-0">
-                    <strong>Note:</strong> Traditional amblyopia treatment is
-                    most effective when started early in life. While treatment
-                    in older children and adults may still offer improvements,
-                    the degree of visual recovery tends to be lower. Regular
-                    follow-ups with an eye care professional are essential to
-                    monitor progress and adjust treatment as needed.
-                  </p>
-                </div>
-              </div>
-            </div>
+    <section class="content5 cid-tJS6uM4N93" id="content05-7">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-12 col-lg-10">
+            <h4 class="mbr-section-subtitle mbr-fonts-style mb-4 display-5">
+              Important Considerations
+            </h4>
+            <p class="mbr-text mbr-fonts-style display-7">
+              When undergoing traditional treatment:
+            </p>
+            <ul class="mbr-text mbr-fonts-style display-7">
+              <li>Early intervention is most effective</li>
+              <li>Regular follow-ups with eye care professionals</li>
+              <li>Consistent adherence to treatment plans</li>
+              <li>Patience and persistence are key to success</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -316,13 +387,15 @@
       }
     </style>
 
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/smooth-scroll.js"></script>
-    <script src="assets/js/index.js"></script>
-    <script src="assets/js/navbar-dropdown.js"></script>
-    <script src="assets/js/player.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/script.js"></script>
-    <script src="assets/js/formoid.min.js"></script>
+    <script src="assets/js/components.js"></script>
 
     <!-- Subscription Modal -->
     <div

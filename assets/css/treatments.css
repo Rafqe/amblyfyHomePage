@@ -1,0 +1,257 @@
+/* Treatment Pages Common Styles */
+
+/* Header Section */
+.header5 {
+  padding: 4rem 0;
+}
+
+.header-text {
+  color: #555;
+}
+
+.key-points {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+}
+
+.point-item {
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+}
+
+.point-item i {
+  font-size: 1.2rem;
+}
+
+/* Treatment Methods Section */
+.treatment-methods {
+  padding: 2rem 0;
+}
+
+.method-item {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  border-left: 5px solid #007bff;
+}
+
+.method-item:hover {
+  transform: translateY(-5px);
+}
+
+.method-item h3 {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.method-item h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: #007bff;
+}
+
+.method-item p {
+  color: #555;
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+/* Treatment Image */
+.treatment-image {
+  margin: 3rem 0;
+  position: relative;
+}
+
+.treatment-image img {
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+  max-width: 400px;
+  margin: 0 auto;
+  display: block;
+}
+
+.treatment-image img:hover {
+  transform: scale(1.02);
+}
+
+.treatment-image::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 20px;
+  background: rgba(0, 0, 0, 0.1);
+  filter: blur(10px);
+  z-index: -1;
+}
+
+/* Note Box */
+.note-box {
+  background: #f8f9fa;
+  padding: 1.5rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+  border: 1px solid #dee2e6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .method-item {
+    padding: 1.5rem;
+  }
+
+  .method-item h3 {
+    font-size: 1.5rem;
+  }
+
+  .treatment-image {
+    margin-bottom: 2rem;
+  }
+
+  .header-text {
+    text-align: center;
+  }
+
+  .key-points {
+    text-align: left;
+  }
+}
+
+/* Professional Footer Styles */
+.footer3 {
+  background-color: #2c3e50;
+  padding: 4rem 0 2rem;
+  color: #fff;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.footer-column h5 {
+  color: #fff;
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.footer-column h5::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: #007bff;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.8rem;
+}
+
+.footer-links a {
+  color: #bdc3c7;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+.footer-contact p {
+  color: #bdc3c7;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+}
+
+.footer-contact i {
+  color: #007bff;
+  margin-right: 0.5rem;
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: #bdc3c7;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-links a {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background: #007bff;
+  transform: translateY(-3px);
+}
+
+@media (max-width: 992px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-column {
+    text-align: center;
+  }
+
+  .footer-column h5::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+}
