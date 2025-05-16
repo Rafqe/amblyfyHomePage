@@ -1,9 +1,21 @@
 // Function to load HTML components
 async function loadComponent(elementId, componentPath) {
   try {
-    const response = await fetch(componentPath);
+    const response = await fetch(componentPath, {
+      headers: {
+        Accept: "text/html",
+      },
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
     const html = await response.text();
-    document.getElementById(elementId).innerHTML = html;
+    // Remove any script tags that might be injected
+    const cleanHtml = html.replace(
+      /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi,
+      ""
+    );
+    document.getElementById(elementId).innerHTML = cleanHtml;
 
     // Initialize navbar functionality after loading
     if (elementId === "navbar-container") {
@@ -52,8 +64,8 @@ async function loadComponent(elementId, componentPath) {
 // Load components when the DOM is ready
 document.addEventListener("DOMContentLoaded", function () {
   // Load navbar
-  loadComponent("navbar-container", "/amblyfyHomePage/components/navbar.html");
+  loadComponent("navbar-container", "components/navbar.html");
 
   // Load footer
-  loadComponent("footer-container", "/amblyfyHomePage/components/footer.html");
+  loadComponent("footer-container", "components/footer.html");
 });
