@@ -52,8 +52,8 @@ async function loadComponent(elementId, componentPath) {
 // Load components when the DOM is ready
 document.addEventListener("DOMContentLoaded", function () {
   // Load navbar
-  loadComponent("navbar-container", "/components/navbar.html");
+  loadComponent("navbar-container", "components/navbar.html");
 
   // Load footer
-  loadComponent("footer-container", "/components/footer.html");
+  loadComponent("footer-container", "components/footer.html");
 });
