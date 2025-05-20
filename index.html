@@ -37,6 +37,17 @@
       .navbar.opened {
         z-index: 1032;
       }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      .fade-in {
+        animation: fadeIn 0.5s ease-in;
+      }
     </style>
   </head>
   <body>
@@ -46,7 +57,6 @@
     <section
       data-bs-version="5.1"
       class="header5 cid-tJS6uM4N87"
-      data-bg-video="https://www.youtube.com/watch?v=RhlQvbvMg-0"
       id="header05-1"
     >
       <div class="mbr-fallback-image disabled"></div>
@@ -55,7 +65,7 @@
         style="opacity: 1; background-color: rgb(255, 255, 255)"
       ></div>
       <div class="topbg"></div>
-      <div class="align-center container">
+      <div class="container fade-in">
         <div class="row justify-content-center">
           <div class="col-md-12 col-lg-9">
             <h1 class="mbr-section-title mbr-fonts-style mb-4 display-1">
@@ -91,6 +101,11 @@
       data-bs-version="5.1"
       class="features4 cid-tMlEXTHLbS"
       id="features04-w"
+      style="
+        background-image: url('assets/images/ambBackground.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+      "
     >
       <div class="container">
         <div class="row justify-content-center">
@@ -250,6 +265,11 @@
       data-bs-version="5.1"
       class="features15 cid-tLek7gQhG7"
       id="features015-m"
+      style="
+        background-image: url('assets/images/ambBackground.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+      "
     >
       <div class="container">
         <div class="mbr-section-head mb-5">
@@ -423,53 +443,6 @@
       </div>
     </section>
 
-    <section
-      data-bs-version="5.1"
-      class="contacts01 cid-uKuPGknK9z"
-      id="contacts01-2c"
-    >
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-12 content-head">
-            <div class="mbr-section-head mb-5">
-              <h3
-                class="mbr-section-title mbr-fonts-style align-center mb-0 display-2"
-              >
-                <strong>Contacts</strong>
-              </h3>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="item features-without-image col-12 col-md-6 active">
-            <div class="item-wrapper">
-              <div class="text-wrapper">
-                <h6 class="card-title mbr-fonts-style mb-3 display-5">
-                  <strong>Address</strong>
-                </h6>
-                <p class="mbr-text mbr-fonts-style display-7">
-                  Lastādijas iela 12 k-3 <br />Latgales priekšpilsēta<br />Rīga,
-                  LV-1050<br />Latvija
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="item features-without-image col-12 col-md-6">
-            <div class="item-wrapper">
-              <div class="text-wrapper">
-                <h6 class="card-title mbr-fonts-style mb-3 display-5">
-                  <strong>Email</strong>
-                </h6>
-                <p class="mbr-text mbr-fonts-style display-7">
-                  info@amblyfy.com<br />sales@amblyfy.com<br />press@amblyfy.com
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Footer Container -->
     <div id="footer-container"></div>
 
@@ -499,6 +472,7 @@
               class="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
+              style="color: #ff0000"
             ></button>
           </div>
           <div class="modal-body">
